@@ -1,0 +1,681 @@
+/* ============================================
+   QR CODE PAGE - Qr_Code.css
+   Only styles specific to generate_qr.php
+   and scan.php — nothing shared with dashboard
+   ============================================ */
+
+/* ---- Page Header ---- */
+.qr-page-header {
+    position: relative;
+    text-align: center;
+    padding: 28px 20px 24px;
+    margin-bottom: 24px;
+    background: #f0f2ff;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.qr-page-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e1e2e;
+    position: relative;
+    z-index: 2;
+}
+
+.qr-page-header p {
+    font-size: 13px;
+    color: #888;
+    margin-top: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Cloud decorations */
+.qr-cloud {
+    position: absolute;
+    background: #d6e6f5;
+    border-radius: 50px;
+    opacity: 0.65;
+    z-index: 1;
+}
+
+.qr-cloud-left  { width: 120px; height: 60px; top: 18px; left: 30px; }
+.qr-cloud-right { width: 100px; height: 50px; top: 24px; right: 50px; }
+
+.qr-cloud-left::before,
+.qr-cloud-right::before {
+    content: '';
+    position: absolute;
+    background: #d6e6f5;
+    border-radius: 50%;
+}
+.qr-cloud-left::before  { width: 65px; height: 55px; top: -22px; left: 18px; }
+.qr-cloud-right::before { width: 55px; height: 48px; top: -18px; left: 14px; }
+
+/* ---- Alert ---- */
+.qr-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.qr-alert-error {
+    background: #fff0f0;
+    border: 1px solid #ffcccc;
+    color: #cc0000;
+}
+
+/* ---- Form Card ---- */
+.qr-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(124, 131, 253, 0.10);
+}
+
+.qr-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e1e2e;
+    margin-bottom: 22px;
+}
+
+/* ---- Form Rows & Groups ---- */
+.qr-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.qr-row:last-child { margin-bottom: 0; }
+
+.qr-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.qr-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e1e2e;
+    margin-bottom: 8px;
+}
+
+.qr-group input[type="text"],
+.qr-group input[type="email"],
+.qr-group textarea {
+    padding: 11px 14px;
+    border: 1.5px solid #e8e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #1e1e2e;
+    outline: none;
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.qr-group input:focus,
+.qr-group textarea:focus {
+    border-color: #7c83fd;
+    box-shadow: 0 0 0 3px rgba(124, 131, 253, 0.12);
+}
+
+.qr-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.qr-group input.qr-input-error,
+.qr-group textarea.qr-input-error,
+.qr-group select.qr-input-error {
+    border-color: #ff4d4d;
+}
+
+/* ---- Select ---- */
+.qr-select-wrapper {
+    position: relative;
+}
+
+.qr-select-wrapper select {
+    width: 100%;
+    padding: 11px 40px 11px 14px;
+    border: 1.5px solid #e8e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #1e1e2e;
+    background: white;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.qr-select-wrapper select:focus {
+    border-color: #7c83fd;
+    box-shadow: 0 0 0 3px rgba(124, 131, 253, 0.12);
+}
+
+.qr-select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #aaa;
+    pointer-events: none;
+}
+
+.qr-upload-zone.upload-error { border-color: #cc0000; background: #fff0f0; }
+
+/* ---- Field inline warning ---- */
+.qr-field-warning {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #cc0000;
+    background: #fff0f0;
+    border: 1px solid #ffcccc;
+    border-radius: 7px;
+    padding: 6px 10px;
+}
+
+/* ---- Required asterisk ---- */
+.qr-required { color: #ff4d4d; }
+
+/* ---- Item Info Grid ---- */
+.qr-item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.qr-item-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Submit Row ---- */
+.qr-submit-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.qr-submit-btn {
+    padding: 13px 42px;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
+}
+
+.qr-submit-btn:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   QR RESULT SECTION
+   ============================================ */
+
+.qr-result-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 40px;
+}
+
+.qr-result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 48px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(124, 131, 253, 0.15);
+    max-width: 420px;
+    width: 100%;
+}
+
+.qr-success-icon {
+    width: 70px;
+    height: 70px;
+    background: #f0fff4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.qr-result-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e1e2e;
+    margin-bottom: 8px;
+}
+
+.qr-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+#qrcode canvas,
+#qrcode img {
+    border-radius: 12px;
+    border: 8px solid #f0f2ff;
+    padding: 6px;
+}
+
+.qr-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.qr-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 32px;
+    background: #7c83fd;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    box-shadow: 0 4px 14px rgba(124, 131, 253, 0.3);
+}
+
+.qr-download-btn:hover {
+    background: #5a61e8;
+    transform: translateY(-2px);
+}
+
+.qr-new-btn {
+    font-size: 13px;
+    color: #7c83fd;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.qr-new-btn:hover {
+    color: #5a61e8;
+    text-decoration: underline;
+}
+
+/* ============================================
+   SCAN PAGE (scan.php)
+   ============================================ */
+
+body.scan-page {
+    background: #f0f2ff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.scan-wrapper {
+    width: 100%;
+    max-width: 440px;
+}
+
+.scan-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 8px 32px rgba(124, 131, 253, 0.15);
+}
+
+.scan-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.scan-logo span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #1e1e2e;
+}
+
+.scan-badge {
+    display: block;
+    text-align: center;
+    background: #e8f5e9;
+    color: #2ecc71;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin: 0 auto 14px;
+    width: fit-content;
+}
+
+.scan-item-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e1e2e;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.scan-category {
+    font-size: 13px;
+    color: #7c83fd;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.scan-divider {
+    height: 1px;
+    background: #f0f2ff;
+    margin: 20px 0;
+}
+
+.scan-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 14px;
+}
+
+.scan-info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.scan-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.scan-info-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #888;
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.scan-info-label svg { stroke: #7c83fd; flex-shrink: 0; }
+
+.scan-info-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e1e2e;
+    text-align: right;
+    word-break: break-word;
+}
+
+.scan-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    background: #f8f9ff;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.scan-contact-btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.scan-call-btn,
+.scan-email-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.2s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.scan-call-btn  { background: #7c83fd; color: white; }
+.scan-email-btn { background: #f0f2ff; color: #7c83fd; }
+
+.scan-call-btn:hover,
+.scan-email-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.scan-not-found {
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.scan-not-found h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e1e2e;
+}
+
+.scan-not-found p { font-size: 14px; color: #888; }
+
+/* ============================================
+   NEW: IMAGE UPLOAD SECTION
+   ============================================ */
+
+/* ============================================
+   IMAGE UPLOAD SECTION
+   ============================================ */
+
+.qr-upload-section {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1.5px solid #f0f2ff;
+}
+
+.qr-upload-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e1e2e;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.qr-upload-optional {
+    font-size: 12px;
+    font-weight: 500;
+    color: #aaa;
+    margin-left: 4px;
+}
+
+.qr-upload-zone {
+    border: 2px dashed #d5d5e8 !important;
+    border-radius: 12px !important;
+    padding: 32px 20px !important;
+    text-align: center;
+    cursor: pointer;
+    background: #fafafe !important;
+    min-height: 180px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.qr-upload-zone.drag-over {
+    border-color: #7c83fd !important;
+    background: #f0f1ff !important;
+}
+
+.qr-upload-zone.has-preview {
+    padding: 16px !important;
+}
+
+.qr-upload-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px;
+    width: 100%;
+}
+
+.qr-upload-content svg {
+    margin-bottom: 4px;
+}
+
+.qr-upload-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e1e2e;
+    margin: 0;
+}
+
+.qr-upload-hint {
+    font-size: 12px;
+    color: #aaa;
+    margin: 0 0 12px;
+}
+
+.qr-upload-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 20px;
+    background: #1a1a2e;
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s;
+    border: none;
+}
+
+.qr-upload-btn:hover { background: #2d2d4a; }
+
+.qr-preview-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.qr-preview-container img {
+    max-height: 160px;
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.qr-remove-photo {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* ============================================
+   SCAN PAGE - Item Image
+   ============================================ */
+
+.scan-item-image {
+    width: 100%;
+    max-height: 220px;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.scan-item-no-image {
+    width: 100%;
+    height: 140px;
+    background: #f5f7ff;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}

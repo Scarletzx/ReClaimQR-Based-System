@@ -1,0 +1,413 @@
+/* ============================================
+   ITEM DETAILS PAGE - items_detail.css
+   ============================================ */
+
+/* ---- Detail Overlay & Card ---- */
+.detail-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 0 40px;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 8px 32px rgba(124, 131, 253, 0.15);
+    overflow: hidden;
+}
+
+/* ---- Header ---- */
+.detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    background: #e8f4fd;
+    border-bottom: 1px solid #dce8f5;
+}
+
+.detail-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e1e2e;
+}
+
+.detail-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1.5px solid #e8e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #888;
+    transition: background 0.2s, color 0.2s;
+}
+
+.detail-close:hover {
+    background: #ff4d4d;
+    color: white;
+    border-color: #ff4d4d;
+}
+
+/* ---- Image ---- */
+.detail-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background: #f0f2f5;
+    overflow: hidden;
+}
+
+.detail-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f5f7ff;
+    color: #ccc;
+    font-size: 13px;
+}
+
+.detail-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+}
+
+.badge-found { background: #7c83fd; }
+.badge-lost  { background: #ff6b6b; }
+
+/* ---- Info Grid ---- */
+.detail-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 20px 24px;
+    background: #f8f9ff;
+}
+
+.detail-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.detail-info-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+}
+
+.detail-info-value {
+    background: white;
+    border: 1.5px solid #e8e8f0;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e1e2e;
+    min-height: 38px;
+}
+
+/* ---- Action Buttons ---- */
+.detail-actions {
+    display: flex;
+    gap: 14px;
+    padding: 18px 24px 22px;
+    justify-content: center;
+    background: white;
+}
+
+.detail-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 36px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    transition: transform 0.15s, opacity 0.2s, box-shadow 0.2s;
+}
+
+.detail-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+.detail-btn-message {
+    background: #2ecc71;
+    color: white;
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
+}
+
+.detail-btn-notify {
+    background: #2ecc71;
+    color: white;
+    box-shadow: 0 4px 14px rgba(46, 204, 113, 0.35);
+}
+
+/* Owner note */
+.detail-owner-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px 20px;
+    font-size: 13px;
+    color: #888;
+    font-weight: 600;
+    justify-content: center;
+    background: white;
+}
+
+/* ============================================
+   NOTIFY MODAL
+   ============================================ */
+
+.notify-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.notify-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.notify-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 28px 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    transform: translateY(20px);
+    transition: transform 0.2s;
+}
+
+.notify-modal-overlay.active .notify-modal {
+    transform: translateY(0);
+}
+
+.notify-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.notify-modal-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #1e1e2e;
+}
+
+.notify-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #888;
+    transition: background 0.2s;
+}
+
+.notify-close:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+.notify-modal-sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.notify-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notify-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid #e8e8f0;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    cursor: pointer;
+}
+
+.notify-option:hover {
+    transform: translateY(-2px);
+}
+
+.notify-option-email:hover {
+    border-color: #7c83fd;
+    background: #f8f9ff;
+}
+
+.notify-option-whatsapp:hover {
+    border-color: #25d366;
+    background: #f0fff5;
+}
+
+.notify-option-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notify-option-email .notify-option-icon {
+    background: #f0f2ff;
+    color: #7c83fd;
+}
+
+.notify-option-email .notify-option-icon svg {
+    stroke: #7c83fd;
+}
+
+.notify-option-whatsapp .notify-option-icon {
+    background: #e8fff1;
+    color: #25d366;
+}
+
+.notify-option-whatsapp .notify-option-icon svg {
+    stroke: #25d366;
+}
+
+.notify-option-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.notify-option-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e1e2e;
+}
+
+.notify-option-desc {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* ============================================
+   NOTIFY RESULT PAGE (notify_email.php)
+   ============================================ */
+
+.notify-result-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.notify-result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 40px 36px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(124, 131, 253, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.notify-result-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notify-result-icon.success { background: #f0fff4; }
+.notify-result-icon.error   { background: #fff0f0; }
+
+.notify-result-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e1e2e;
+}
+
+.notify-result-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.notify-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 28px;
+    background: #7c83fd;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 6px;
+}
+
+.notify-back-btn:hover {
+    background: #5a61e8;
+    transform: translateY(-2px);
+}
